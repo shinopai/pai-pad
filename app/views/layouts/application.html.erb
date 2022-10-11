@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>PaiPad</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+
+<body>
+  <!-- header -->
+  <% if check_if_authpage || check_if_recipepage %>
+  <%= render 'shared/header_auth' %>
+  <% else %>
+  <%= render 'shared/header_main' %>
+  <% end %>
+
+  <!-- flash message -->
+  <% if flash[:notice] %>
+  <p class="flash-msg notice"><%= notice %></p>
+  <% end %>
+  <% if flash[:alert] %>
+  <p class="flash-msg alert"><%= alert %></p>
+  <% end %>
+
+  <!-- main -->
+  <main class="main">
+    <div class="wrap">
+      <%= yield %>
+    </div>
+  </main>
+
+  <!-- footer -->
+  <% if check_if_authpage || check_if_recipepage %>
+  <%= render 'shared/footer_auth' %>
+  <% else %>
+  <%= render 'shared/footer_main' %>
+  <% end %>
+</body>
+
 </html>

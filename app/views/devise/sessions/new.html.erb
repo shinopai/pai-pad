@@ -1,0 +1,14 @@
+<%= form_for(resource, as: resource_name, html: { class: "form-auth mx-auto" }, url: session_path(resource_name)) do |f| %>
+<div>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'メールアドレス', class: 'form-auth__input' %>
+</div>
+
+<div>
+  <%= f.password_field :password, autocomplete: "current-password", placeholder: 'パスワード', class: 'form-auth__input' %>
+</div>
+
+<div class="form-auth__item">
+  <%= f.submit "ログイン", class: 'form-auth__input--submit' %>
+</div>
+<%= render "devise/shared/links" %>
+<% end %>

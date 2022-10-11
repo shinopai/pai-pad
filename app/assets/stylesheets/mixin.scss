@@ -1,0 +1,42 @@
+/* font-size 12px */
+@mixin fs-12 {
+  font-size: clamp(1rem, 0.902rem + 0.49vw, 1.2rem);
+}
+
+/* font-size 13px */
+@mixin fs-13 {
+  font-size: clamp(1.1rem, 1.002rem + 0.49vw, 1.3rem);
+}
+
+/* font-size 14px */
+@mixin fs-14 {
+  font-size: clamp(1.2rem, 1.102rem + 0.49vw, 1.4rem);
+}
+
+/* font-size 15px */
+@mixin fs-15 {
+  font-size: clamp(1.3rem, 1.202rem + 0.49vw, 1.5rem);
+}
+
+/* font-size 16px */
+@mixin fs-16 {
+  font-size: clamp(1.4rem, 1.302rem + 0.49vw, 1.6rem);
+}
+
+/* font-size 20px */
+@mixin fs-20 {
+  font-size: clamp(1.8rem, 1.702rem + 0.49vw, 2rem);
+}
+
+/* before content of footer upper title */
+@mixin before-content($ico) {
+  content: "";
+  background: url($ico) no-repeat;
+  background-size: contain;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 0;
+  top: calc(50% - 10px);
+}

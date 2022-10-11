@@ -1,0 +1,58 @@
+<header class="header-main">
+  <div class="header-main__upper">
+    <div class="wrap">
+      <div class="header-main__upper-inner flex">
+        <h2 class="header-main__upper-heading">毎日の料理を楽しみにする</h2>
+        <ul class="header-main__upper-menu flex">
+          <li class="header-main__upper-item">
+            <%= link_to 'プレミアムサービス', '#', class:
+            'header-main__upper-link premium' %>
+          </li>
+          <% if user_signed_in? %>
+          <li class="header-main__upper-item">
+            <%= link_to current_user.name + 'さん', '#', class:
+            'header-main__upper-link' %>
+          </li>
+          <% else %>
+          <li class="header-main__upper-item">
+            <%= link_to 'ユーザー登録(無料)', new_user_registration_path, class:
+            'header-main__upper-link' %>
+          </li>
+          <li class="header-main__upper-item">
+            <%= link_to 'ログイン', new_user_session_path, class:
+            'header-main__upper-link' %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="header-main__lower">
+    <div class="wrap">
+      <div class="header-main__lower-inner flex">
+        <h1 class="header-main__lower-logo">
+          <%= link_to image_tag('logo_paipad.png'), root_path %>
+          <div class="header-main__lower-label-wrap">
+            <div class="header-main__lower-label">
+              <span>1万</span><br />レシピ
+            </div>
+          </div>
+        </h1>
+        <form action="" class="header-main__lower-form">
+          <input type="text" name="" id="" />
+          <input type="submit" name="" id="" value="レシピ検索" />
+        </form>
+        <ul class="header-main__lower-links flex">
+          <li class="header-main__lower-item">
+            <%= link_to 'MYフォルダ', '#', class: 'header-main__lower-link gray'
+            %>
+          </li>
+          <li class="header-main__lower-item">
+            <%= link_to 'レシピを書く', new_recipe_path, class:
+            'header-main__lower-link green' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

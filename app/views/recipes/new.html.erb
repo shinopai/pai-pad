@@ -1,0 +1,18 @@
+<!-- ページタイトル -->
+<%= render partial: 'shared/page_title', locals: { page_title: '新規レシピ投稿'
+} %> <%= form_with model: @recipe, url: create_recipe_path(current_user), class:
+'form-recipe', local: true do |new_recipe| %>
+<h2 class="form-recipe__heading">レシピを書く</h2>
+<%= render 'shared/error_messages', model: new_recipe.object %>
+
+<div class="form-recipe__item">
+  <%= new_recipe.label :title, 'レシピのタイトル', class: 'form-recipe__label' %><br>
+  <%= new_recipe.text_field :title, class: 'form-recipe__input' %>
+</div>
+
+<div class="form-recipe__item">
+  <%= new_recipe.label :title, 'レシピのタイトル', class: 'form-recipe__label' %><br>
+  <%= new_recipe.text_field :title, class: 'form-recipe__input' %>
+</div>
+
+<% end %>

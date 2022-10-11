@@ -1,0 +1,141 @@
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__upper flex">
+      <dl class="footer__upper-list">
+        <dt class="footer__upper-title recipe">レシピをさがす</dt>
+        <dd class="footer__upper-item">
+          <%= link_to 'カテゴリ一覧', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to '話題のレシピ', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to '人気の検索キーワード', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to '新着レシピ', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'デイリーアクセス数ランキング', '#' %>
+        </dd>
+      </dl>
+      <dl class="footer__upper-list">
+        <dt class="footer__upper-title write">レシピを書く</dt>
+        <dd class="footer__upper-item">
+          <%= link_to 'レシピを書く', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'レシピの書き方について', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to '企業・団体キッチンの登録', '#' %>
+        </dd>
+        <dt class="footer__upper-title secondary menu">献立</dt>
+        <dd class="footer__upper-item">
+          <%= link_to 'みんなの献立', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'プレミアム献立', '#' %>
+        </dd>
+      </dl>
+      <dl class="footer__upper-list">
+        <dt class="footer__upper-title suggest">おすすめ</dt>
+        <dd class="footer__upper-item">
+          <%= link_to 'モバイルサービス', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'パイパッドニュース', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'パイパッドのレシピ本', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to '料理の基本', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'パイパッドブログ', '#' %>
+        </dd>
+        <dt class="footer__upper-title secondary premium">
+          プレミアムサービス
+        </dt>
+        <dd class="footer__upper-item">
+          <%= link_to 'プレミアムサービス', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'プレミアムクーポン', '#' %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'プレミアムパス', '#' %>
+        </dd>
+      </dl>
+      <dl class="footer__upper-list">
+        <dt class="footer__upper-title user">あなたのページ</dt>
+        <% if user_signed_in? %>
+        <dd class="footer__upper-item">
+          <%= link_to current_user.name + 'さん', '#' %>
+        </dd>
+        <% else %>
+        <dd class="footer__upper-item">
+          <%= link_to 'ユーザー登録(無料)', new_user_registration_path %>
+        </dd>
+        <dd class="footer__upper-item">
+          <%= link_to 'ログイン', new_user_session_path %>
+        </dd>
+        <% end %>
+      </dl>
+    </div>
+    <div class="footer__lower">
+      <div class="footer__lower-flex flex">
+        <h3 class="footer__lower-flex-title">サポート</h3>
+        <ul class="footer__lower-flex-list flex">
+          <li class="footer__lower-flex-item">
+            <%= link_to 'ヘルプ', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to '料理の安心', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to '利用規約等', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to 'リンクについて', '#' %>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__lower-flex flex">
+        <h3 class="footer__lower-flex-title">企業情報</h3>
+        <ul class="footer__lower-flex-list flex">
+          <li class="footer__lower-flex-item">
+            <%= link_to '運営会社', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to 'プライバシーポリシー', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to '広告掲載', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to '採用情報', '#' %>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__lower-flex flex">
+        <h3 class="footer__lower-flex-title">日本</h3>
+        <ul class="footer__lower-flex-list flex last">
+          <li class="footer__lower-flex-item">
+            <%= link_to 'Español', '#' %>
+          </li>
+          <li class="footer__lower-flex-item">
+            <%= link_to 'English', '#' %>
+          </li>
+        </ul>
+      </div>
+      <small class="footer__copyr"
+        >Copyright&copy; Paipad Inc. All Rights Reserved</small
+      >
+      <figure class="footer__img">
+        <%= image_tag 'img_footer01.png' %>
+      </figure>
+    </div>
+  </div>
+</footer>
