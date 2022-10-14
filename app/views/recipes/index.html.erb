@@ -1,0 +1,37 @@
+<!-- ページタイトル -->
+<%= render partial: 'shared/page_title', locals: { page_title: '新着レシピ'
+} %>
+
+<div class="recipe">
+  <div class="recipe__inner">
+    <h2 class="recipe__heading">新着レシピ</h2>
+    <div class="recipe__contents">
+      <% @recipes.each do |recipe| %>
+      <div class="recipe__flex flex">
+        <div class="recipe__flex-item before">
+          <% if recipe.image? %>
+          <%= image_tag recipe.image.url %>
+          <% else %>
+          <%= image_tag 'img_food01.jpg' %>
+          <% end %>
+        </div>
+        <div class="recipe__flex-item after">
+          <%= link_to '#', class: 'contents' do %>
+          <h3><%= recipe.title %></h3>
+          <% end %>
+          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, '#', class: 'contents' %></span>
+          <p><%= recipe.comment %></p>
+          <p>
+            <% if recipe.materials.any? %>
+            材料:&nbsp;<%= recipe.materials[0].name %>
+            <% else %>
+            材料:&nbsp;無し
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+      <%= paginate @recipes %>
+    </div>
+  </div>
+</div>

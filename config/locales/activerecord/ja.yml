@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      recipe: "レシピ"
+      material: "材料"
+      flow: "作り方"
+    attributes:
+      recipe:
+        title: "レシピタイトル"
+        image: "レシピ画像"
+        comment: "レシピの一言"
+        tips: "コツ・ポイント"
+        upbringing: "生い立ち"
+        category: "カテゴリー"
+        materials_attributes[0][:name]: "材料名"
+        flows_attributes: "作り方"

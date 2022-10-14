@@ -1,4 +1,39 @@
 <!-- ページタイトル -->
 <%= render partial: 'shared/page_title', locals: { page_title: '' } %>
 
-<strong>hello</strong>
+<div class="home">
+  <div class="home__wrap first">
+    <h2 class="home__heading">新着レシピ</h2>
+    <div class="home__new-flex flex">
+      <% @recipes.each do |recipe| %>
+      <%= link_to '#', class: 'contents' do %>
+      <div class="home__new-item">
+        <% if recipe.image? %>
+        <%= image_tag recipe.image.url, class: 'home__new-img' %>
+        <% else %>
+        <%= image_tag 'img_food01.jpg', class: 'home__new-img' %>
+        <% end %>
+        <h3 class="home__new-title">
+          <%= recipe.title %>
+        </h3>
+        <p class="home__new-txt">
+          by&nbsp;<%= recipe.user.name %>
+        </p>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+    <%= link_to 'もっと見る>', recipes_path, class: 'home__link' %>
+  </div>
+  <div class="home__wrap">
+    <h2 class="home__heading">レシピカテゴリ</h2>
+    <div class="home__category-flex flex">
+      <%= link_to '野菜のおかず', '#', class: 'home__category-link veggie' %>
+      <%= link_to 'お肉のおかず', '#', class: 'home__category-link meat' %> <%=
+      link_to '魚介のおかず', '#', class: 'home__category-link fish' %> <%=
+      link_to 'ごはんもの', '#', class: 'home__category-link rice' %> <%=
+      link_to 'パスタ・グラタン', '#', class: 'home__category-link pasta' %> <%=
+      link_to '麺', '#', class: 'home__category-link noodles' %> <%= link_to 'サラダ', '#', class: 'home__category-link salad' %> <%= link_to 'スープ・汁物', '#', class: 'home__category-link soup' %> <%= link_to 'お弁当', '#', class: 'home__category-link bento' %> <%= link_to 'おもてなし料理', '#', class: 'home__category-link omotenashi' %> <%= link_to 'お菓子', '#', class: 'home__category-link snack' %> <%= link_to 'パン', '#', class: 'home__category-link bread' %>
+    </div>
+  </div>
+</div>

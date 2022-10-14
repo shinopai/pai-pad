@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_095310) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_054334) do
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -43,8 +43,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_095310) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "flows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "body", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_flows_on_recipe_id"
+  end
+
+  create_table "materials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_materials_on_recipe_id"
+  end
+
   create_table "recipes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
+    t.string "image"
     t.text "comment"
     t.text "tips"
     t.text "upbringing"
@@ -72,6 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_095310) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "flows", "recipes"
+  add_foreign_key "materials", "recipes"
   add_foreign_key "recipes", "categories"
   add_foreign_key "recipes", "users"
 end

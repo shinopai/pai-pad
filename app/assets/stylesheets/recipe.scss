@@ -1,0 +1,63 @@
+@import "mixin";
+
+/* 新着レシピ一覧 */
+.recipe {
+  background-color: #fff;
+  padding: 20px;
+  &__inner {
+    border: 2px solid #f7f3e8;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  &__heading {
+    @include fs-20();
+    color: #401c00;
+    margin: 0;
+  }
+  &__contents {
+    margin-top: 40px;
+  }
+  &__flex {
+    margin-bottom: 15px;
+    &-item {
+      &.before {
+        width: 15%;
+      }
+      &.after {
+        flex-grow: 1;
+        padding-left: 10px;
+        h3 {
+          color: #8ca405;
+          font-weight: bold;
+          @include fs-18();
+          text-decoration: underline;
+          display: inline-block;
+          margin: 0;
+        }
+        span {
+          margin-left: 5px;
+          span {
+            color: #999;
+            @include fs-11();
+          }
+          a {
+            color: #71411a;
+            @include fs-12();
+            display: inline;
+            text-decoration: underline;
+          }
+        }
+        p {
+          &:first-of-type {
+            color: #808080;
+            @include fs-14();
+          }
+          &:nth-of-type(2) {
+            color: #cfaa80;
+            @include fs-12();
+          }
+        }
+      }
+    }
+  }
+}

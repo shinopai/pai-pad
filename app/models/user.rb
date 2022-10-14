@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # relation
+  has_many :recipes
   mount_uploader :profile_image, ProfileImageUploader
   mount_uploader :profile_bg_image, ProfileBackGroundImageUploader
 end

@@ -1,0 +1,125 @@
+/* home */
+.home {
+  padding: min(5%, 50px) 0;
+  &__heading {
+    @include fs-20();
+    margin: 0;
+  }
+  &__wrap {
+    background-color: #fff;
+    padding: 20px;
+    &:not(.first) {
+      margin-top: 25px;
+    }
+  }
+  &__link {
+    color: #696652;
+    @include fs-13();
+    width: fit-content;
+    margin-top: 20px;
+    margin-left: auto;
+  }
+  &__new {
+    &-flex {
+      margin-top: 10px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 20px;
+    }
+    &-item {
+      width: 15%;
+      display: flex;
+      flex-direction: column;
+      row-gap: 5px;
+    }
+    &-img {
+      border-radius: 10px;
+    }
+    &-title {
+      color: #8ca405;
+      font-weight: bold;
+      @include fs-13();
+      margin: 0;
+    }
+    &-txt {
+      color: #696652;
+      @include fs-12();
+      margin: 0;
+    }
+  }
+  &__category {
+    &-flex {
+      margin-top: 50px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 55px;
+    }
+    &-link {
+      @include fs-15();
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      width: 15%;
+      &.veggie {
+        &::before {
+          @include before-heading-content("img_veggie.png");
+        }
+      }
+      &.meat {
+        &::before {
+          @include before-heading-content("img_meat.png");
+        }
+      }
+      &.fish {
+        &::before {
+          @include before-heading-content("img_fish.png");
+        }
+      }
+      &.rice {
+        &::before {
+          @include before-heading-content("img_rice.png");
+        }
+      }
+      &.pasta {
+        &::before {
+          @include before-heading-content("img_pasta.png");
+        }
+      }
+      &.noodles {
+        &::before {
+          @include before-heading-content("img_noodles.png");
+        }
+      }
+      &.salad {
+        &::before {
+          @include before-heading-content("img_salad.png");
+        }
+      }
+      &.soup {
+        &::before {
+          @include before-heading-content("img_soup.png");
+        }
+      }
+      &.bento {
+        &::before {
+          @include before-heading-content("img_bento.png");
+        }
+      }
+      &.omotenashi {
+        &::before {
+          @include before-heading-content("img_omotenashi.png");
+        }
+      }
+      &.snack {
+        &::before {
+          @include before-heading-content("img_snack.png");
+        }
+      }
+      &.bread {
+        &::before {
+          @include before-heading-content("img_bread.png");
+        }
+      }
+    }
+  }
+}

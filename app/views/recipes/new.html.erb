@@ -1,18 +1,71 @@
 <!-- ページタイトル -->
 <%= render partial: 'shared/page_title', locals: { page_title: '新規レシピ投稿'
 } %> <%= form_with model: @recipe, url: create_recipe_path(current_user), class:
-'form-recipe', local: true do |new_recipe| %>
+'form-recipe', html: { novalidate: true }, local: true do |new_recipe| %>
 <h2 class="form-recipe__heading">レシピを書く</h2>
-<%= render 'shared/error_messages', model: new_recipe.object %>
+
+<%= render "shared/error_messages", object: new_recipe.object %>
 
 <div class="form-recipe__item">
-  <%= new_recipe.label :title, 'レシピのタイトル', class: 'form-recipe__label' %><br>
+  <%= new_recipe.label :title, 'レシピのタイトル', class: 'form-recipe__label'
+  %><br />
   <%= new_recipe.text_field :title, class: 'form-recipe__input' %>
 </div>
 
-<div class="form-recipe__item">
-  <%= new_recipe.label :title, 'レシピのタイトル', class: 'form-recipe__label' %><br>
-  <%= new_recipe.text_field :title, class: 'form-recipe__input' %>
+<div class="form-recipe__item flex">
+  <div class="form-recipe__input--file before">
+    <label>
+      <span title="ファイルを選択">
+        <%= image_tag 'ico_camera.png', alt: '+画像' %>
+        クリックして料理の写真をのせる
+      </span>
+      <%= new_recipe.file_field :image %>
+    </label>
+  </div>
+  <div class="after">
+    <%= new_recipe.label :comment, 'レシピに添える一言', class:
+    'form-recipe__label' %><br />
+    <%= new_recipe.text_area :comment, class: 'form-recipe__textarea', rows: 5 %> <%= new_recipe.fields_for :materials, @recipe.materials.build do |material| %> <%= label_tag :name, '材料(カンマで区切ってください)', class: 'form-recipe__label' %><br /><%= material.text_area :name, class: 'form-recipe__textarea', rows: 5 %> <% end %>
+  </div>
 </div>
-
+<div class="form-recipe__item">
+  <h3 class="form-recipe__item-heading">作り方</h3>
+  <table class="form-recipe__table" id="form-recipe-table">
+    <%= new_recipe.fields_for :flows, @recipe.flows.build do |flow| %>
+    <tbody>
+      <tr>
+        <td class="first"><%= flow.text_area :body, rows: 3 %></td>
+        <td class="secondary"><%= button_tag type: 'button', class: 'form-recipe__btn', onclick: 'deleteRow(this)' do %>
+          削除
+          <% end %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+  <%= button_tag type: 'button', class: 'form-recipe__btn add' do %>
+  手順を追加
+  <% end %>
+</div>
+<div class="form-recipe__item flex">
+  <div class="form-recipe__item--before">
+    <%= new_recipe.label :tips, 'コツ・ポイント', class:
+    'form-recipe__label' %><br />
+    <%= new_recipe.text_area :tips, class: 'form-recipe__textarea', rows: 5
+    %>
+  </div>
+  <div class="form-recipe__item--after">
+    <%= new_recipe.label :upbringing, 'このレシピの生い立ち', class:
+    'form-recipe__label' %><br />
+    <%= new_recipe.text_area :upbringing, class: 'form-recipe__textarea', rows: 5
+    %>
+  </div>
+</div>
+<div class="form-recipe__item">
+  <%= new_recipe.label :category_id, 'カテゴリー', class: 'form-recipe__label' %><br>
+  <%= new_recipe.collection_select :category_id, Category.all, :id, :name, options = { include_blank: '選択してください' }, { class: 'form-recipe__select' , required: true } %>
+</div>
+<div class="form-recipe__item">
+  <%= new_recipe.submit 'レシピを投稿する', class: 'form-recipe__submit' %>
+</div>
 <% end %>

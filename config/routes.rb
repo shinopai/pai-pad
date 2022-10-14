@@ -15,4 +15,7 @@ Rails.application.routes.draw do
 
   # post new recipe
   post 'recipes/create/:user_id', to: 'recipes#create', as: :create_recipe
+
+  # recent recipe list
+  get 'recipes/recent', to: 'recipes#index', as: :recipes
 end
