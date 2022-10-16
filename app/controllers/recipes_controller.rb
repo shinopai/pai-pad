@@ -24,6 +24,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def search
+    @recipes = @q.result.page(params[:page]).per(30)
+  end
+
 
   # private
   def recipe_params

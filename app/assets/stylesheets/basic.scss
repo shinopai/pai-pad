@@ -216,6 +216,7 @@ figure {
       input[type="submit"] {
         @include fs-14();
         padding: 4px;
+        cursor: pointer;
       }
     }
   }

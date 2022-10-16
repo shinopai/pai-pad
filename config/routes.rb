@@ -24,4 +24,7 @@ Rails.application.routes.draw do
 
   # show recipe list every category
   get 'category/:id', to: 'categories#show', as: :show_category
+
+  # search recipe
+  get 'search', to: 'recipes#search', as: :search_recipes
 end

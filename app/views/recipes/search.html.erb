@@ -1,0 +1,43 @@
+<!-- ページタイトル -->
+<%= render partial: 'shared/page_title', locals: { page_title: @q.title_or_comment_cont
+} %>
+
+<div class="recipe">
+  <div class="recipe__inner">
+    <h2 class="recipe__heading">「<%= @q.title_or_comment_cont %>」の検索結果</h2>
+    <div class="recipe__contents">
+      <% if @recipes.any? %>
+      <% @recipes.each do |recipe| %>
+      <div class="recipe__flex flex">
+        <div class="recipe__flex-item before">
+          <%= link_to show_recipe_path(recipe), class: 'contents' do %>
+          <% if recipe.image? %>
+          <%= image_tag recipe.image.url %>
+          <% else %>
+          <%= image_tag 'img_food01.jpg' %>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="recipe__flex-item after">
+          <%= link_to show_recipe_path(recipe), class: 'contents' do %>
+          <h3><%= recipe.title %></h3>
+          <% end %>
+          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, '#', class: 'contents' %></span>
+          <p><%= recipe.comment %></p>
+          <p>
+            <% if recipe.materials.any? %>
+            材料:&nbsp;<%= recipe.materials[0].name %>
+            <% else %>
+            材料:&nbsp;無し
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+      <%= paginate @recipes %>
+      <% else %>
+      <p class="recipe__txt">検索結果はありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

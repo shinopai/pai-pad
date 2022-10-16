@@ -38,10 +38,9 @@
             </div>
           </div>
         </h1>
-        <form action="" class="header-main__lower-form">
-          <input type="text" name="" id="" placeholder="料理名・食材名" />
-          <input type="submit" name="" id="" value="レシピ検索" />
-        </form>
+        <%= search_form_for @q, url: search_recipes_path, class:
+        'header-main__lower-form' do |search| %>
+        <%= search.text_field :title_or_comment_cont, placeholder: '料理名・食材名' %> <%= search.submit 'レシピ検索' %> <% end %>
         <ul class="header-main__lower-links flex">
           <li class="header-main__lower-item">
             <%= link_to 'MYフォルダ', '#', class: 'header-main__lower-link gray'
