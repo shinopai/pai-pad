@@ -61,3 +61,84 @@
     }
   }
 }
+
+/* レシピ詳細 */
+.recipe-show {
+  padding-top: 20px;
+  &__inner {
+    background-color: #fff;
+    border: 1px solid #dddbd6;
+    padding: 20px;
+  }
+  &__heading {
+    color: #8ca405;
+    font-size: clamp(2.2rem, 2.102rem + 0.49vw, 2.4rem);
+  }
+  &__flex {
+    &.first {
+      gap: 25px;
+      border-bottom: 1px solid #dddbd6;
+      padding-bottom: 30px;
+      .recipe-show__flex-item {
+        &.before {
+          width: 25%;
+          img {
+            border-radius: 20px;
+          }
+        }
+        &.after {
+          flex-grow: 1;
+          p {
+            &:first-child {
+              color: #424031;
+              @include fs-15();
+            }
+            &:nth-child(2) {
+              color: #696652;
+              @include fs-13();
+              line-height: 2;
+              img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: inline-block;
+              }
+            }
+          }
+          dl {
+            margin-top: 50px;
+          }
+        }
+      }
+      & + div {
+        margin-top: 30px;
+        border-bottom: 1px solid #dddbd6;
+        padding-bottom: 30px;
+      }
+    }
+    &.secondary {
+      margin-top: 30px;
+      justify-content: space-between;
+      .recipe-show__flex-item {
+        width: 45%;
+      }
+    }
+  }
+  &__sub-heading {
+    @include fs-20();
+    font-weight: bold;
+    margin: 0;
+  }
+  &__txt {
+    margin: 0;
+    @include fs-15();
+    color: #1c1a10;
+  }
+  &__data {
+    color: #696652;
+    @include fs-12();
+    display: block;
+    margin-top: 20px;
+    text-align: right;
+  }
+}

@@ -20,7 +20,9 @@ class RecipesController < ApplicationController
     @recipes = Recipe.page(params[:page]).per(20)
   end
 
-
+  def show
+    @recipe = Recipe.find(params[:id])
+  end
 
 
   # private

@@ -18,4 +18,10 @@ Rails.application.routes.draw do
 
   # recent recipe list
   get 'recipes/recent', to: 'recipes#index', as: :recipes
+
+  # recipe detail
+  get 'recipe/:id', to: 'recipes#show', as: :show_recipe
+
+  # show recipe list every category
+  get 'category/:id', to: 'categories#show', as: :show_category
 end

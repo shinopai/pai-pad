@@ -1,10 +1,10 @@
 <!-- ページタイトル -->
-<%= render partial: 'shared/page_title', locals: { page_title: '新着レシピ'
+<%= render partial: 'shared/page_title', locals: { page_title: @category.name + 'のレシピ一覧'
 } %>
 
 <div class="recipe">
   <div class="recipe__inner">
-    <h2 class="recipe__heading">新着レシピ</h2>
+    <h2 class="recipe__heading">「<%= @category.name %>」のレシピ一覧</h2>
     <div class="recipe__contents">
       <% @recipes.each do |recipe| %>
       <div class="recipe__flex flex">

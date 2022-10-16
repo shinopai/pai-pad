@@ -34,7 +34,7 @@
 # end
 
 Recipe.all.each do |recipe|
-  recipe.materials.create!(
-    name: Faker::Name.name
+  recipe.flows.create!(
+    body: Faker::Lorem.sentence
   )
 end

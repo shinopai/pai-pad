@@ -1,0 +1,51 @@
+<!-- ページタイトル -->
+<%= render partial: 'shared/page_title', locals: { page_title: @recipe.title + ' by ' + @recipe.user.name
+} %>
+
+<div class="recipe-show">
+  <div class="recipe-show__inner">
+    <h2 class="recipe-show__heading">
+      <%= @recipe.title %>
+    </h2>
+    <div class="recipe-show__flex flex first">
+      <div class="recipe-show__flex-item before">
+        <% if @recipe.image? %>
+        <%= image_tag @recipe.image.url %>
+        <% else %>
+        <%= image_tag 'img_food01.jpg' %>
+        <% end %>
+      </div>
+      <div class="recipe-show__flex-item after">
+        <p><%= @recipe.comment %></p>
+        <p>
+          <% if @recipe.user.profile_image? %>
+          <%= image_tag @recipe.user.profile_image.url %>
+          <% else %>
+          <%= image_tag 'img_profile.jpg' %>
+          <% end %>
+          &nbsp;
+          <%= @recipe.user.name %>
+        </p>
+        <dl>
+          <dt class="recipe-show__sub-heading">材料</dt>
+          <dd class="recipe-show__txt"><%= @recipe.materials[0].name %></dd>
+        </dl>
+      </div>
+    </div>
+    <div>
+      <h3 class="recipe-show__sub-heading">作り方</h3>
+      <p class="recipe-show__txt"><%= @recipe.flows[0].body %></p>
+    </div>
+    <div class="recipe-show__flex flex secondary">
+      <dl class="recipe-show__flex-item before">
+        <dt class="recipe-show__sub-heading">コツ・ポイント</dt>
+        <dd class="recipe-show__txt"><%= @recipe.tips %></dd>
+      </dl>
+      <dl class="recipe-show__flex-item after">
+        <dt class="recipe-show__sub-heading">このレシピの生い立ち</dt>
+        <dd class="recipe-show__txt"><%= @recipe.upbringing %></dd>
+      </dl>
+    </div>
+    <span class="recipe-show__data">レシピID:&nbsp;<%= @recipe.id %>&nbsp;公開日:&nbsp;<%= l @recipe.created_at %></span>
+  </div>
+</div>

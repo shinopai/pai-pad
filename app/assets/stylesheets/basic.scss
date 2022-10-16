@@ -250,7 +250,7 @@ figure {
       &.secondary {
         margin-top: 15px;
       }
-      &.recipe {
+      &.recipe-h {
         &::before {
           @include before-content("ico_recipe.png");
         }
