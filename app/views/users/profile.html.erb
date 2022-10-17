@@ -1,0 +1,45 @@
+<!-- ページタイトル -->
+<%= render partial: 'shared/page_title', locals: { page_title: @user.name + 'のキッチン'
+} %>
+
+<div class="profile">
+  <div class="profile__upper">
+    <div class="profile__bg-img">
+      <% if @user.profile_bg_image? %>
+      <%= image_tag @user.profile_bg_image.url %>
+      <% else %>
+      <%= image_tag @user.profile_bg_image %>
+      <% end %>
+    </div>
+    <div class="profile__upper-flex flex">
+      <div class="profile__upper-flex-item before">
+        <% if @user.profile_image? %>
+        <%= image_tag @user.profile_image.url %>
+        <% else %>
+        <%= image_tag @user.profile_image %>
+        <% end %>
+      </div>
+      <p class="profile__upper-flex-item after">
+        <%= @user.name %>さん<span>のキッチン</span>
+      </p>
+    </div>
+  </div>
+  <div class="profile__lower">
+    <h2 class="profile__heading">レシピ<span>(<%= @user.recipes.size %>品)</span><%= link_to 'レシピ一覧>>', user_recipes_path(@user), class: 'profile__link' %></h2>
+    <div class="profile__lower-flex flex">
+      <% if @latest_recipes.any? %>
+      <% @latest_recipes.each_with_index do |recipe, i| %>
+      <%= link_to show_recipe_path(recipe), class: 'profile__lower-flex-link' do %>
+      <figure class="profile__lower-flex-item">
+        <% if recipe.image? %>
+        <%= image_tag recipe.image.url %>
+        <% else %>
+        <%= image_tag recipe.image %>
+        <% end %>
+      </figure>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

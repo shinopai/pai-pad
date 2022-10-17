@@ -72,7 +72,8 @@
         <dt class="footer__upper-title user">あなたのページ</dt>
         <% if user_signed_in? %>
         <dd class="footer__upper-item">
-          <%= link_to current_user.name + 'さん', '#' %>
+          <%= link_to current_user.name + 'さん',
+          user_profile_path(current_user) %>
         </dd>
         <% else %>
         <dd class="footer__upper-item">

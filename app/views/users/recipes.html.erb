@@ -1,12 +1,11 @@
 <!-- ページタイトル -->
-<%= render partial: 'shared/page_title', locals: { page_title: @q.title_or_comment_cont
+<%= render partial: 'shared/page_title', locals: { page_title: @user.name + 'のレシピ一覧'
 } %>
 
 <div class="recipe">
   <div class="recipe__inner">
-    <h2 class="recipe__heading">「<%= @q.title_or_comment_cont %>」の検索結果</h2>
+    <h2 class="recipe__heading"><%= @user.name %>のレシピ一覧&nbsp;(<%= @recipes.count %>件)</h2>
     <div class="recipe__contents">
-      <% if @recipes.any? %>
       <% @recipes.each do |recipe| %>
       <div class="recipe__flex flex">
         <div class="recipe__flex-item before">
@@ -22,7 +21,7 @@
           <%= link_to show_recipe_path(recipe), class: 'contents' do %>
           <h3><%= recipe.title %></h3>
           <% end %>
-          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, '#', class: 'contents' %></span>
+          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, user_profile_path(recipe.user.id), class: 'contents' %></span>
           <p><%= recipe.comment %></p>
           <p>
             <% if recipe.materials.any? %>
@@ -33,10 +32,6 @@
           </p>
         </div>
       </div>
-      <% end %>
-      <%= paginate @recipes %>
-      <% else %>
-      <p class="recipe__txt">検索結果はありません</p>
       <% end %>
     </div>
   </div>

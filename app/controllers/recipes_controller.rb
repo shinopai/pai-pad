@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: %i(index)
+  before_action :authenticate_user!, except: %i(index show)
   before_action :init_recipe
 
   def new

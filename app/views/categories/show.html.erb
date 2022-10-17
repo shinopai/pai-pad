@@ -21,7 +21,7 @@
           <%= link_to show_recipe_path(recipe), class: 'contents' do %>
           <h3><%= recipe.title %></h3>
           <% end %>
-          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, '#', class: 'contents' %></span>
+          <span><span>by</span>&nbsp;<%= link_to recipe.user.name, user_profile_path(recipe.user.id), class: 'contents' %></span>
           <p><%= recipe.comment %></p>
           <p>
             <% if recipe.materials.any? %>

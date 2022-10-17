@@ -27,4 +27,10 @@ Rails.application.routes.draw do
 
   # search recipe
   get 'search', to: 'recipes#search', as: :search_recipes
+
+  # show profile
+  get 'users/profile/:id', to: 'users#show_profile', as: :user_profile
+
+  # show user recipes
+  get 'users/recipes/:id', to: 'users#show_recipes', as: :user_recipes
 end

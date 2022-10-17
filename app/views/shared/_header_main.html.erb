@@ -10,7 +10,7 @@
           </li>
           <% if user_signed_in? %>
           <li class="header-main__upper-item">
-            <%= link_to current_user.name + 'さん', '#', class:
+            <%= link_to current_user.name + 'さん', user_profile_path(current_user), class:
             'header-main__upper-link' %>
           </li>
           <% else %>
