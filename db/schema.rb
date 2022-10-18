@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_054334) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_17_095501) do
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_054334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_flows_on_recipe_id"
+  end
+
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_likes_on_recipe_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "materials", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -90,6 +99,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_054334) do
   end
 
   add_foreign_key "flows", "recipes"
+  add_foreign_key "likes", "recipes"
+  add_foreign_key "likes", "users"
   add_foreign_key "materials", "recipes"
   add_foreign_key "recipes", "categories"
   add_foreign_key "recipes", "users"

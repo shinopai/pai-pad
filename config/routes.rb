@@ -33,4 +33,10 @@ Rails.application.routes.draw do
 
   # show user recipes
   get 'users/recipes/:id', to: 'users#show_recipes', as: :user_recipes
+
+  # like recipe
+  post 'users/:id/recipes/:recipe_id/like', to: 'likes#like_recipe', as: :like_recipe
+
+  # unlike recipe
+  delete 'users/:id/recipes/:recipe_id/unlike', to: 'likes#unlike_recipe', as: :unlike_recipe
 end

@@ -4,6 +4,8 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :materials, dependent: :destroy
   has_many :flows, dependent: :destroy
+  has_many :likes
+  has_many :like_users, through: :likes, source: :user
   accepts_nested_attributes_for :materials, allow_destroy: true
   accepts_nested_attributes_for :flows, allow_destroy: true
   mount_uploader :image, ImageUploader
@@ -18,8 +20,4 @@ class Recipe < ApplicationRecord
             length: { maximum: 300 }
   validates :upbringing,
             length: { maximum: 300 }
-  # validates :materials,
-  #           presence: true
-  # validates :flows,
-  #           presence: true
 end

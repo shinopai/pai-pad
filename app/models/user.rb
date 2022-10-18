@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   # relation
   has_many :recipes
+  has_many :likes
+  has_many :like_recipes, through: :likes, source: :recipe
   mount_uploader :profile_image, ProfileImageUploader
   mount_uploader :profile_bg_image, ProfileBackGroundImageUploader
 end

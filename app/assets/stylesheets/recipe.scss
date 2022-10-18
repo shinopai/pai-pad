@@ -63,6 +63,10 @@
   &__txt {
     @include fs-14();
   }
+  &__img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* レシピ詳細 */
@@ -96,7 +100,7 @@
               color: #424031;
               @include fs-15();
             }
-            &:nth-child(2) {
+            &:nth-of-type(2) {
               color: #696652;
               @include fs-13();
               line-height: 2;
@@ -143,5 +147,31 @@
     display: block;
     margin-top: 20px;
     text-align: right;
+  }
+  &__btn {
+    @include fs-13();
+    color: #1c1a10;
+    position: relative;
+    padding: 5px 15px 5px 30px;
+    cursor: pointer;
+    background-color: #fafaf5;
+    border: 1px solid #dddbd6;
+    &::before {
+      content: "";
+      background: url(ico_like.png) no-repeat;
+      background-size: contain;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 0.5em;
+      top: calc(50% - 20px / 2);
+    }
+    &.remove {
+      &::before {
+        background: url(ico_unlike.png) no-repeat;
+        background-size: contain;
+      }
+    }
   }
 }

@@ -22,6 +22,11 @@
           <h3><%= recipe.title %></h3>
           <% end %>
           <span><span>by</span>&nbsp;<%= link_to recipe.user.name, user_profile_path(recipe.user.id), class: 'contents' %></span>
+          <% if check_exists_likes(recipe.id) %>
+          <%= button_to '保存を外す', unlike_recipe_path(current_user, recipe), method: :delete, class: 'recipe-show__btn remove' %>
+          <% else %>
+          <%= button_to 'レシピを保存', like_recipe_path(current_user, recipe), method: :post, class: 'recipe-show__btn' %>
+          <% end %>
           <p><%= recipe.comment %></p>
           <p>
             <% if recipe.materials.any? %>

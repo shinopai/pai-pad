@@ -17,6 +17,11 @@
       </div>
       <div class="recipe-show__flex-item after">
         <p><%= @recipe.comment %></p>
+        <% if check_exists_likes(@recipe.id) %>
+        <%= button_to '保存を外す', unlike_recipe_path(current_user, @recipe), method: :delete, class: 'recipe-show__btn remove' %>
+        <% else %>
+        <%= button_to 'レシピを保存', like_recipe_path(current_user, @recipe), method: :post, class: 'recipe-show__btn' %>
+        <% end %>
         <p>
           <% if @recipe.user.profile_image? %>
           <%= image_tag @recipe.user.profile_image.url %>
