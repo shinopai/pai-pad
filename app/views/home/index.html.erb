@@ -1,7 +1,12 @@
 <!-- ページタイトル -->
 <%= render partial: 'shared/page_title', locals: { page_title: '' } %>
 
+<!-- スマホメニュー -->
+<%= render 'shared/sp_menu' %>
+
 <div class="home">
+  <%= search_form_for @q, url: search_recipes_path, class: 'header-main__lower-form sm' do |search| %>
+  <%= search.text_field :title_or_comment_cont, placeholder: '料理名・食材名' %><br class="w-520-block"><%= search.submit 'レシピ検索' %> <% end %>
   <div class="home__wrap first">
     <h2 class="home__heading">新着レシピ</h2>
     <div class="home__new-flex flex">

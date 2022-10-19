@@ -8,7 +8,7 @@
       <% if @user.profile_bg_image? %>
       <%= image_tag @user.profile_bg_image.url %>
       <% else %>
-      <%= image_tag @user.profile_bg_image %>
+      <%= image_tag 'img_cooking.jpg' %>
       <% end %>
     </div>
     <div class="profile__upper-flex flex">
@@ -16,7 +16,7 @@
         <% if @user.profile_image? %>
         <%= image_tag @user.profile_image.url %>
         <% else %>
-        <%= image_tag @user.profile_image %>
+        <%= image_tag 'img_profile.jpg' %>
         <% end %>
       </div>
       <p class="profile__upper-flex-item after">

@@ -65,3 +65,10 @@
   margin: 0 auto;
   top: -45px;
 }
+
+/* media query */
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   # auth user
-  devise_for :users, controllers: {
-        registrations: 'users/registrations',
-        sessions: 'users/sessions'
+  devise_for :users, skip: 'sessions', controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations'
       }
+  devise_scope :user do
+    get	'/users/sign_in', to: 'users/sessions#new', as: :new_user_session
+    post	'/users/sign_in', to: 'users/sessions#create', as: :user_session
+    get	'/users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
+  end
 
   # Defines the root path route ("/")
   root "home#index"
@@ -39,4 +45,7 @@ Rails.application.routes.draw do
 
   # unlike recipe
   delete 'users/:id/recipes/:recipe_id/unlike', to: 'likes#unlike_recipe', as: :unlike_recipe
+
+  # user's liked recipes
+  get 'users/likes/:id', to: 'users#show_likes', as: :user_likes
 end

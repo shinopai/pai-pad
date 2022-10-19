@@ -1,0 +1,27 @@
+<ul class="sp-menu">
+  <li class="sp-menu__item"><%= link_to 'プレミアムサービス', '#', class: 'sp-menu__link' %></li>
+  <% if user_signed_in? %>
+  <li class="sp-menu__item">
+    <%= link_to current_user.name + 'さん', user_profile_path(current_user), class: 'sp-menu__link' %>
+  </li>
+  <li class="sp-menu__item">
+    <%= link_to 'ログアウト', destroy_user_session_path, class: 'sp-menu__link' %>
+  </li>
+  <li class="sp-menu__item">
+    <%= link_to 'MYフォルダ', user_likes_path(current_user), class: 'sp-menu__link' %>
+  </li>
+  <li class="sp-menu__item">
+    <%= link_to 'レシピを書く', new_recipe_path, class: 'sp-menu__link' %>
+  </li>
+  <% else %>
+  <li class="sp-menu__item">
+    <%= link_to 'ユーザー登録(無料)', new_user_registration_path, class:
+ 'sp-menu__link' %>
+  </li>
+  <li class="sp-menu__item">
+    <%= link_to 'ログイン', new_user_session_path, class:
+ 'sp-menu__link' %>
+  </li>
+  <% end %>
+</ul>
+<div class="sp-menu__overlay"></div>

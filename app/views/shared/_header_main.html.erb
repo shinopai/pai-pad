@@ -13,6 +13,10 @@
             <%= link_to current_user.name + 'さん', user_profile_path(current_user), class:
             'header-main__upper-link' %>
           </li>
+          <li class="header-main__upper-item">
+            <%= link_to 'ログアウト', destroy_user_session_path, class:
+            'header-main__upper-link' %>
+          </li>
           <% else %>
           <li class="header-main__upper-item">
             <%= link_to 'ユーザー登録(無料)', new_user_registration_path, class:
@@ -24,6 +28,7 @@
           </li>
           <% end %>
         </ul>
+        <figure class="header-main__upper-item sm"><%= image_tag 'ico_menu_sp.png', class: 'header-main__upper-ico' %></figure>
       </div>
     </div>
   </div>
@@ -43,7 +48,7 @@
         <%= search.text_field :title_or_comment_cont, placeholder: '料理名・食材名' %> <%= search.submit 'レシピ検索' %> <% end %>
         <ul class="header-main__lower-links flex">
           <li class="header-main__lower-item">
-            <%= link_to 'MYフォルダ', '#', class: 'header-main__lower-link gray'
+            <%= link_to 'MYフォルダ', user_likes_path(current_user), class: 'header-main__lower-link gray'
             %>
           </li>
           <li class="header-main__lower-item">

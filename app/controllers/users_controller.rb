@@ -14,6 +14,12 @@ class UsersController < ApplicationController
     render :recipes
   end
 
+  def show_likes
+    @recipes = @user.like_recipes
+
+    render :likes
+  end
+
   # private
   def find_user
     @user = User.find(params[:id])
